@@ -1,6 +1,7 @@
 const fetchWeatherData = async (city) => {
-  API_KEY = "9365ea75838d5c1f6f6909aebe1f7d56";
-  BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+  const API_KEY = "9365ea75838d5c1f6f6909aebe1f7d56";
+  const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+
   try {
     const response = await fetch(BASE_URL);
 
@@ -9,13 +10,11 @@ const fetchWeatherData = async (city) => {
     }
 
     const data = await response.json();
-    console.log(data); // You can return or use this object
+    return data; // Return the data so the caller can use it
   } catch (error) {
     console.error("Error fetching weather data:", error.message);
     return null;
   }
 };
-fetchWeatherData("Mumbai");
-
 
 export default fetchWeatherData;
